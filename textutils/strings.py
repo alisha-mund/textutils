@@ -12,7 +12,10 @@ def truncate(text: str, max_len: int, suffix: str = "...") -> str:
     """Shorten text so the result, including the suffix, is at most max_len characters."""
     if len(text) <= max_len:
         return text
-    return text[:max_len] + suffix
+    if max_len <= len(suffix):
+        return suffix[:max_len]
+    available = max_len - len(suffix)
+    return text[:available] + suffix
 
 
 def reverse_words(text: str) -> str:
