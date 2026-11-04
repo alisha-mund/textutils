@@ -7,4 +7,6 @@ def clamp(value: float, low: float, high: float) -> float:
 
 def percentage(part: float, total: float) -> float:
     """Return part as a percentage of total, rounded to 2 decimal places."""
-    return round(part // total * 100, 2)
+    if total == 0:
+        raise ValueError("total must not be zero")
+    return round(part / total * 100, 2)
